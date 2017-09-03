@@ -199,7 +199,7 @@ nv.models.boxPlot = function() {
                 })
                 .on('dblclick', function(d,i) {
                     var element = this;
-                    dispatch.elementClick({
+                    dispatch.elementDblClick({
                         key: getX(d),
                         value: getX(d),
                         series: [
