@@ -26,7 +26,7 @@ nv.models.boxPlot = function() {
         container = null,
         xDomain, xRange,
         yDomain, yRange,
-        dispatch = d3.dispatch('elementMouseover', 'elementMouseout', 'elementMousemove', 'renderEnd'),
+        dispatch = d3.dispatch('elementClick', 'elementMouseover', 'elementMouseout', 'elementMousemove', 'renderEnd'),
         duration = 250,
         maxBoxWidth = null;
 
@@ -196,6 +196,22 @@ nv.models.boxPlot = function() {
                         index: i,
                         e: d3.event
                     });
+                })
+                .on('click', function(d,i,j) {
+                    var element = this;
+                    dispatch.elementClick({
+                        key: getX(d),
+                        value: getX(d),
+                        series: [
+                            { key: 'Q3', value: getQ3(d), color: getColor(d) || color(d,i) },
+                            { key: 'Q2', value: getQ2(d), color: getColor(d) || color(d,i) },
+                            { key: 'Q1', value: getQ1(d), color: getColor(d) || color(d,i) }
+                        ],
+                        data: d,
+                        index: i,
+                        e: d3.event
+                    });
+                    d3.event.stopPropagation();
                 })
                 .on('mousemove', function(d,i) {
                     dispatch.elementMousemove({e: d3.event});
