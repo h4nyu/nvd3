@@ -140,7 +140,7 @@ nv.models.boxPlotChart = function() {
                 if (reduceXTicks)
                     xTicks
                         .filter(function(d,i) {
-                            return i % Math.ceil(data[0].values.length / (availableWidth / 100)) !== 0;
+                            return i % Math.ceil(data.length / (availableWidth / 100)) !== 0;
                         })
                         .selectAll('text, line')
                         .style('opacity', 0);
