@@ -45,6 +45,14 @@ nv.models.boxPlotChart = function() {
         renderWatch.reset();
         renderWatch.models(boxplot);
         if (showXAxis) renderWatch.models(xAxis);
+          if (reduceXTicks)
+            xTicks
+              .filter(function(d,i) {
+                return i % Math.ceil(data.length / (availableWidth / 100)) !== 0;
+              })
+              .selectAll('text, line')
+              .style('opacity', 0);
+
         if (showYAxis) renderWatch.models(yAxis);
 
         selection.each(function(data) {
