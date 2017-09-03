@@ -130,7 +130,11 @@ nv.models.boxPlotChart = function() {
                 g.select('.nv-x.nv-axis').attr('transform', 'translate(0,' + y.range()[0] + ')');
                 g.select('.nv-x.nv-axis').call(xAxis);
 
-                var xTicks = g.select('.nv-x.nv-axis').selectAll('g');
+                var xTicks = g.select('.nv-x.nv-axis > g').selectAll('g');
+
+                xTicks
+                    .selectAll('line, text')
+                    .style('opacity', 1)
                 if (staggerLabels) {
                     xTicks
                         .selectAll('text')
