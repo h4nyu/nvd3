@@ -200,7 +200,7 @@ nv.models.boxPlot = function() {
                 .on('mousemove', function(d,i) {
                   dispatch.elementMousemove({e: d3.event});
                 })
-                .on('click', function(d,i,j) {
+                .on('click', function(d,i) {
                     var element = this;
                     dispatch.elementClick({
                         key: getX(d),
