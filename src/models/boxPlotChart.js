@@ -17,6 +17,7 @@ nv.models.boxPlotChart = function() {
         showYAxis = true,
         rightAlignYAxis = false,
         staggerLabels = false,
+        reduceXTicks = true,
         tooltip = nv.models.tooltip(),
         x, y,
         noData = 'No Data Available.',
@@ -208,6 +209,7 @@ nv.models.boxPlotChart = function() {
         showYAxis: {get: function(){return showYAxis;}, set: function(_){showYAxis=_;}},
         tooltipContent:    {get: function(){return tooltip;}, set: function(_){tooltip=_;}},
         noData:    {get: function(){return noData;}, set: function(_){noData=_;}},
+        reduceXTicks:    {get: function(){return reduceXTicks;}, set: function(_){reduceXTicks=_;}},
 
         // options that require extra logic in the setter
         margin: {get: function(){return margin;}, set: function(_){
