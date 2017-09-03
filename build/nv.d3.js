@@ -1,4 +1,4 @@
-/* nvd3 version 1.8.6-dev (https://github.com/novus/nvd3) 2017-09-03 */
+/* nvd3 version 1.8.6-dev (https://github.com/novus/nvd3) 2017-09-04 */
 (function(){
 
 // set up main nv object
@@ -2414,14 +2414,6 @@ nv.models.boxPlotChart = function() {
         renderWatch.reset();
         renderWatch.models(boxplot);
         if (showXAxis) renderWatch.models(xAxis);
-          if (reduceXTicks)
-            xTicks
-              .filter(function(d,i) {
-                return i % Math.ceil(data.length / (availableWidth / 100)) !== 0;
-              })
-              .selectAll('text, line')
-              .style('opacity', 0);
-
         if (showYAxis) renderWatch.models(yAxis);
 
         selection.each(function(data) {
@@ -2512,6 +2504,14 @@ nv.models.boxPlotChart = function() {
                         .selectAll('text')
                         .attr('transform', function(d,i,j) { return 'translate(0,' + (j % 2 === 0 ? '5' : '17') + ')' })
                 }
+
+                if (reduceXTicks)
+                    xTicks
+                        .filter(function(d,i) {
+                            return i % Math.ceil(data[0].values.length / (availableWidth / 100)) !== 0;
+                        })
+                        .selectAll('text, line')
+                        .style('opacity', 0);
             }
 
             if (showYAxis) {
